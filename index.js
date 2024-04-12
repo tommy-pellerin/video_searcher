@@ -75,16 +75,12 @@ const addNewKeyword = (label, keyword) => {
 // This function display only articles that contain at least one of the selected keywords.
 const reloadArticles = () => {
     document.querySelector('.articlesList').innerHTML = '';
-    console.log("Ici keywords:");
-    console.log(keywords);
-    console.log("ici currentKeuword:");
-    console.log(currentKeywords);
+    
     const articlesToShow = data.articles.filter((article) => article.tags.some(tag => currentKeywords.includes(tag))); //some exécute la fonction (fournis en argument), renvoi un true indiquant le résultat du test.
     //some() est équivalent à un forEach mais pas applicable ici car : 
     //forEach canont be inside the filter method. The filter method expects a function that returns a boolean value (true or false) for each element in the array. 
     //The forEach method doesn't return anything; it's used for side effects (like logging to the console or changing an external variable).
-    console.log("Ici acticle pares filtre:");
-    console.log(articlesToShow);
+    
     articlesToShow.forEach((article) => {
         document.querySelector('.articlesList').innerHTML += `
             <article>
