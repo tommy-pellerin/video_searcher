@@ -137,14 +137,14 @@ const showKeywordsList = (value) => {
             ...prevKeywords,
             ...category.keywords
         ], []);
-        console.log(allKeywordsFromCategories);
+        // console.log(allKeywordsFromCategories);
         // Filter allKeywordsFromCategories to not contain matchinKeywords
         const filteredAllKeywordsFromCategories = allKeywordsFromCategories.filter(keyword => !matchingKeywords.includes(keyword));
-        console.log(filteredAllKeywordsFromCategories);
+        // console.log(filteredAllKeywordsFromCategories);
 
         // create an array of all keywords found with matchingKeywords to be at the begining of the list
         const keywordsToShow = [...matchingKeywords,...filteredAllKeywordsFromCategories]; 
-        console.log(keywordsToShow);        
+        // console.log(keywordsToShow);        
         
         // This will allow you to add a new element in the list under the text input
         // On click, we add the keyword, like so:
@@ -177,4 +177,9 @@ window.addEventListener('DOMContentLoaded', () => {
     data.articles.forEach((article) => {
         addNewArticle(article);
     });
+});
+
+document.addEventListener('click', function(event) {
+    const keywordListBox = document.querySelector('.inputKeywordsHandle ul');
+    resetKeywordsUl();
 });
