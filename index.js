@@ -80,7 +80,7 @@ const reloadArticles = () => {
     //some() est équivalent à un forEach mais pas applicable ici car : 
     //forEach canont be inside the filter method. The filter method expects a function that returns a boolean value (true or false) for each element in the array. 
     //The forEach method doesn't return anything; it's used for side effects (like logging to the console or changing an external variable).
-    
+
     articlesToShow.forEach((article) => {
         document.querySelector('.articlesList').innerHTML += `
             <article>
