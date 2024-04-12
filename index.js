@@ -72,11 +72,19 @@ const addNewKeyword = (label, keyword) => {
 };
 
 // We reload the articles depends of the currentKeywords
-// TODO: Modify this function to display only articles that contain at least one of the selected keywords.
+// This function display only articles that contain at least one of the selected keywords.
 const reloadArticles = () => {
     document.querySelector('.articlesList').innerHTML = '';
-    
-    const articlesToShow = data.articles;
+    console.log("Ici keywords:");
+    console.log(keywords);
+    console.log("ici currentKeuword:");
+    console.log(currentKeywords);
+    const articlesToShow = data.articles.filter((article) => article.tags.some(tag => currentKeywords.includes(tag))); //some exécute la fonction (fournis en argument), renvoi un true indiquant le résultat du test.
+    //some() est équivalent à un forEach mais pas applicable ici car : 
+    //forEach canont be inside the filter method. The filter method expects a function that returns a boolean value (true or false) for each element in the array. 
+    //The forEach method doesn't return anything; it's used for side effects (like logging to the console or changing an external variable).
+    console.log("Ici acticle pares filtre:");
+    console.log(articlesToShow);
     articlesToShow.forEach((article) => {
         document.querySelector('.articlesList').innerHTML += `
             <article>
@@ -106,7 +114,6 @@ const resetInput = () => {
 };
 
 // Clean a keyword to lowercase and without special characters
-// TODO: Make the cleaning => DONE
 const cleanedKeyword = (keyword) => {
     const cleanedKeyword = keyword.toLowerCase().replace(/[^a-z]/g, ''); //will replace all characters that are not lowercase letters from a to z
     //[^a-z0-9] is the character set which matches any character that is NOT in the range of lowercase a-z or 0-9.
