@@ -106,10 +106,13 @@ const resetInput = () => {
 };
 
 // Clean a keyword to lowercase and without special characters
-// TODO: Make the cleaning
+// TODO: Make the cleaning => DONE
 const cleanedKeyword = (keyword) => {
-    const cleanedKeyword = keyword;
-
+    const cleanedKeyword = keyword.toLowerCase().replace(/[^a-z]/g, ''); //will replace all characters that are not lowercase letters from a to z
+    //[^a-z0-9] is the character set which matches any character that is NOT in the range of lowercase a-z or 0-9.
+    //^ inside the square brackets negates the set, meaning it will match anything that is NOT in the specified range.
+    //g is a flag that means "global". This will find all matches in the string, not just the first one.
+    console.log(cleanedKeyword);
     return cleanedKeyword;
 };
 
